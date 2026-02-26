@@ -16,6 +16,8 @@ A local lightweight Retrieval-Augmented Generation (RAG) pipeline for extracting
 - Batch processing with rate limiting
 - Prompt logging for evaluation
 - CSV response logging
+- <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/b9b472cc-9967-4fa4-a680-eeeafd085930" />
+
 
 ---
 

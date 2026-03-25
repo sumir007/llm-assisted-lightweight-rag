@@ -10,9 +10,9 @@ from rag_cli import (
     call_github_models, SYSTEM_PROMPT, TOP_K, MAX_INPUT_CHARS
 )
 
-st.set_page_config(page_title="Contract RAG Analyzer", layout="wide")
-st.title("📄 Contract RAG Analyzer")
-st.write("Upload contracts and ask questions about dates, terms, validity, and more.")
+st.set_page_config(page_title="PDF Assistant", layout="wide")
+st.title("📄 PDF RAG Assistant")
+st.write("Upload pdfs and ask questions about dates, terms, validity, and more.")
 
 # Sidebar for configuration
 with st.sidebar:

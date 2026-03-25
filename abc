@@ -1,0 +1,26 @@
+graph TD
+    A["User Query<br/>Is it valid or expired?"] -->|Input| B["LLM Query Expansion<br/>Extract signals"]
+    B --> C["Canonical Phrases:<br/>valid, expired, expiration<br/>Synonyms, Keywords"]
+    C -->|Weighted Scoring| D["Score Chunks"]
+    E["Chunk with:<br/>Date: 12 March 2020<br/>Term: 5 years"] -->|Input| D
+    
+    D -->|Score Calculation| F["Score Chunk:<br/>- Date pattern match: +5<br/>- Term pattern match: +4<br/>- Keyword matches: +2<br/>Total: High"]
+    
+    F -->|Top-K Selection| G["Select Top 3 Chunks<br/>Including date/term chunk"]
+    
+    G -->|Build Prompt| H["System Prompt:<br/>If asked if expired:<br/>Reply ONLY 'Expired'<br/>or 'Valid'"]
+    
+    H -->|Add Context| I["User Prompt:<br/>QUESTION: Is it valid or expired?<br/>CONTEXT CHUNKS:<br/>Chunk 1: Date 12 March 2020...<br/>Chunk 2: Term 5 years..."]
+    
+    I -->|Send to LLM| J["GitHub Models API<br/>gpt-4.1"]
+    
+    J -->|Calculate Expiry| K["Math:<br/>Start: 12 March 2020<br/>+ 5 years<br/>= 12 March 2025<br/><br/>Today: 25 March 2026<br/>2026-03-25 > 2025-03-12<br/>= TRUE"]
+    
+    K -->|Respond| L["Output:<br/>Expired"]
+    
+    L -->|Display| M["Result Box<br/>Expired"]
+    
+    style A fill:#e1f5ff
+    style K fill:#fff3e0
+    style L fill:#ffebee
+    style M fill:#ffebee
